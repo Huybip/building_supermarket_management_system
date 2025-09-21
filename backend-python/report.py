@@ -1,4 +1,3 @@
-// filepath: /workspaces/building_supermarket_management_system/backend-python/report.py
 from flask import Flask, request, send_file, jsonify
 import io
 import pandas as pd
