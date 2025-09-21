@@ -1,0 +1,15 @@
+// filepath: /workspaces/building_supermarket_management_system/frontend/css/style.css
+body { 
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+}
+.container { max-width: 420px; margin: 80px auto; padding: 20px; border: 1px solid #ddd; border-radius: 6px; }
+input, select, button { display: block; width: 100%; padding: 8px; margin: 8px 0; }
+nav { background: #333; color: #fff; padding: 10px; }
+nav a { color: #fff; margin-right: 10px; text-decoration: none;}
+main { padding: 20px; }
+@media (max-width: 600px) {
+  .container { margin: 20px; }
+}
