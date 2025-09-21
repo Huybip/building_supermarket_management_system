@@ -1,0 +1,26 @@
+// filepath: /workspaces/building_supermarket_management_system/frontend/index.html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Supermarket - Login</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Đăng nhập</h1>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Email/Username" required />
+      <input type="password" id="password" placeholder="Mật khẩu" required />
+      <select id="role">
+        <option value="customer">Khách hàng</option>
+        <option value="staff">Nhân viên</option>
+        <option value="admin">Admin</option>
+      </select>
+      <button type="submit">Đăng nhập</button>
+    </form>
+    <p><a href="dashboard.html">Mở Dashboard (admin/staff)</a> | <a href="banhang.html">Thu ngân</a></p>
+  </div>
+  <script src="js/script.js"></script>
+</body>
+</html>
