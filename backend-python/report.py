@@ -3,6 +3,7 @@ import io
 import pandas as pd
 import mysql.connector
 from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4
 import os
 
 app = Flask(__name__)
@@ -19,18 +20,30 @@ def get_conn():
 
 @app.route('/report/doanhthu')
 def report_doanhthu():
-    from_date = request.args.get('from')
-    to_date = request.args.get('to')
+    # Prefer 'from_date'/'to_date' but accept 'from' for backward-compat
+    from_date = request.args.get('from_date') or request.args.get('from')
+    to_date = request.args.get('to_date') or request.args.get('to')
+    if not from_date or not to_date:
+        return jsonify({"error":"Missing from/to parameters"}), 400
+
     conn = get_conn()
     cur = conn.cursor(dictionary=True)
-    cur.execute("SELECT DATE(created_at) as ngay, SUM(tong_tien) as doanh_thu FROM HoaDon WHERE created_at BETWEEN %s AND %s GROUP BY DATE(created_at)", (from_date, to_date))
+    cur.execute(
+        "SELECT DATE(created_at) as ngay, SUM(tong_tien) as doanh_thu "
+        "FROM HoaDon WHERE created_at BETWEEN %s AND %s GROUP BY DATE(created_at)",
+        (from_date, to_date)
+    )
     rows = cur.fetchall()
+    cur.close()
+    conn.close()
+
     df = pd.DataFrame(rows)
     output = io.BytesIO()
     with pd.ExcelWriter(output, engine='openpyxl') as writer:
         df.to_excel(writer, index=False, sheet_name='doanhthu')
     output.seek(0)
-    return send_file(output, download_name='doanhthu.xlsx', as_attachment=True, mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    return send_file(output, download_name='doanhthu.xlsx', as_attachment=True,
+                     mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
 @app.route('/report/ton-kho')
 def report_tonkho():
@@ -38,14 +51,23 @@ def report_tonkho():
     cur = conn.cursor(dictionary=True)
     cur.execute("SELECT id, ma, ten, ton_kho, ngay_het_han FROM SanPham")
     rows = cur.fetchall()
-    df = pd.DataFrame(rows)
-    # simple pdf generation
+    cur.close()
+    conn.close()
+
     pdf_buf = io.BytesIO()
-    p = canvas.Canvas(pdf_buf)
+    p = canvas.Canvas(pdf_buf, pagesize=A4)
     p.drawString(50, 800, "Bao cao ton kho")
     y = 780
-    for r in rows:
-        line = f"{r['id']} - {r['ma']} - {r['ten']} - {r['ton_kho']}"
+    for row in rows:
+        # ensure row is a dict (mysql connector may return RowType; cast to dict for static checker)
+        r = dict(row) if not isinstance(row, dict) else row
+        parts = [
+            str(r.get('id', '')),
+            str(r.get('ma', '')),
+            str(r.get('ten', '')),
+            str(r.get('ton_kho', ''))
+        ]
+        line = " - ".join(parts)
         p.drawString(50, y, line)
         y -= 15
         if y < 50:
@@ -67,6 +89,7 @@ def report_nhanvien():
         df.to_excel(writer, index=False, sheet_name='nhanvien')
     output.seek(0)
     return send_file(output, download_name='nhanvien.xlsx', as_attachment=True, mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
