@@ -1,9 +1,9 @@
 package com.example.servingwebcontent.service;
 
+import com.example.servingwebcontent.dto.UserCreateDTO;
 import com.example.servingwebcontent.model.User;
 import com.example.servingwebcontent.model.Role;
 import com.example.servingwebcontent.repository.UserRepository;
-import com.example.servingwebcontent.dto.UserCreateDTO;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -58,14 +58,12 @@ public class UserService {
             existing.setFullName(dto.getFullName());
             existing.setPhone(dto.getPhone());
             existing.setAddress(dto.getAddress());
-            // role change only if valid
             if (dto.getRole() != null) {
                 try {
                     existing.setRole(Role.valueOf(dto.getRole()));
-                } catch (Exception e) {
+                } catch (Exception ignored) {
                 }
             }
-            // password change: only if provided
             if (dto.getPassword() != null && !dto.getPassword().isBlank()) {
                 existing.setPassword(encoder.encode(dto.getPassword()));
             }

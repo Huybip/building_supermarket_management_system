@@ -3,7 +3,6 @@ package com.example.servingwebcontent.controller;
 import com.example.servingwebcontent.dto.AuthResponse;
 import com.example.servingwebcontent.dto.LoginRequest;
 import com.example.servingwebcontent.dto.UserCreateDTO;
-import com.example.servingwebcontent.model.User;
 import com.example.servingwebcontent.service.UserService;
 import com.example.servingwebcontent.security.JwtTokenUtil;
 import jakarta.validation.Valid;
@@ -27,7 +26,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@Valid @RequestBody UserCreateDTO dto) {
-        User saved = userService.createFromDto(dto);
+        userService.createFromDto(dto);
         return ResponseEntity.ok().build();
     }
 
