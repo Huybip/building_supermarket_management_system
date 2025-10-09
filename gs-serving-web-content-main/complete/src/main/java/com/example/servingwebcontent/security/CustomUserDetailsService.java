@@ -15,15 +15,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User u = repo.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-
-        // nếu muốn prefix ROLE_ sử dụng roles(...); fallback CUSTOMER nếu null
+        User u = repo.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
         String roleName = (u.getRole() != null) ? u.getRole().name() : "CUSTOMER";
-
         return org.springframework.security.core.userdetails.User.withUsername(u.getUsername())
                 .password(u.getPassword())
-                .roles(roleName) // sẽ tự thêm "ROLE_" prefix
+                .roles(roleName)
                 .accountExpired(false)
                 .accountLocked(false)
                 .credentialsExpired(false)

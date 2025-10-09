@@ -12,7 +12,6 @@ public class UserResponseDTO {
     private LocalDateTime createdAt;
     private Boolean enabled;
 
-    // getters/setters
     public Long getId() {
         return id;
     }

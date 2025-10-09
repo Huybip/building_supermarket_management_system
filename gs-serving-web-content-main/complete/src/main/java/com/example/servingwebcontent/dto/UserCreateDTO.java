@@ -11,14 +11,13 @@ public class UserCreateDTO {
     @Size(min = 6)
     private String password;
 
-    @NotNull
-    private String role; // ADMIN/STAFF/CUSTOMER - service should validate
+    @NotBlank
+    private String role;
 
     private String fullName;
     private String phone;
     private String address;
 
-    // getters/setters
     public String getUsername() {
         return username;
     }
