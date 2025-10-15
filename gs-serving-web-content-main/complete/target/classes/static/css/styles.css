@@ -1,0 +1,13 @@
+body {
+  font-family: system-ui, Arial, sans-serif;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  color: #222;
+}
+h1 { margin-bottom: 0.25rem; }
+a { color: #0b5fff; text-decoration: none; }
+form { margin-top: 1rem; }
+input { padding: 0.4rem; margin: 0.2rem 0; width: 100%; max-width: 360px; }
+button { padding: 0.5rem 1rem; margin-top: 0.5rem; }
+#msg { margin-top: 1rem; color: #b00; }

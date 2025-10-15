@@ -11,6 +11,7 @@
 /workspaces/building_supermarket_management_system/gs-serving-web-content-main/complete/src/main/java/com/example/servingwebcontent/controller/RestExceptionHandler.java
 /workspaces/building_supermarket_management_system/gs-serving-web-content-main/complete/src/main/java/com/example/servingwebcontent/controller/SupplierController.java
 /workspaces/building_supermarket_management_system/gs-serving-web-content-main/complete/src/main/java/com/example/servingwebcontent/controller/UserController.java
+/workspaces/building_supermarket_management_system/gs-serving-web-content-main/complete/src/main/java/com/example/servingwebcontent/controller/WebController.java
 /workspaces/building_supermarket_management_system/gs-serving-web-content-main/complete/src/main/java/com/example/servingwebcontent/dto/AuthResponse.java
 /workspaces/building_supermarket_management_system/gs-serving-web-content-main/complete/src/main/java/com/example/servingwebcontent/dto/LoginRequest.java
 /workspaces/building_supermarket_management_system/gs-serving-web-content-main/complete/src/main/java/com/example/servingwebcontent/dto/UserCreateDTO.java
