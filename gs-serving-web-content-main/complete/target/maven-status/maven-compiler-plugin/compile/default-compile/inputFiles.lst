@@ -1,5 +1,6 @@
 /workspaces/building_supermarket_management_system/gs-serving-web-content-main/complete/src/main/java/com/example/servingwebcontent/GreetingController.java
 /workspaces/building_supermarket_management_system/gs-serving-web-content-main/complete/src/main/java/com/example/servingwebcontent/ServingWebContentApplication.java
+/workspaces/building_supermarket_management_system/gs-serving-web-content-main/complete/src/main/java/com/example/servingwebcontent/config/CorsConfig.java
 /workspaces/building_supermarket_management_system/gs-serving-web-content-main/complete/src/main/java/com/example/servingwebcontent/config/DataInitializer.java
 /workspaces/building_supermarket_management_system/gs-serving-web-content-main/complete/src/main/java/com/example/servingwebcontent/controller/AuthController.java
 /workspaces/building_supermarket_management_system/gs-serving-web-content-main/complete/src/main/java/com/example/servingwebcontent/controller/CategoryController.java

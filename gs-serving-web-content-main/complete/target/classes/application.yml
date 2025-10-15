@@ -1,0 +1,31 @@
+spring:
+  profiles:
+    active: dev
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://mysql-2ad290b8-huytranhh3.l.aivencloud.com:11809/defaultdb?ssl-mode=REQUIRED}
+    username: ${SPRING_DATASOURCE_USERNAME:avnadmin}
+    password: ${SPRING_DATASOURCE_PASSWORD:change_me}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+flyway:
+  enabled: true
+  locations: classpath:db/migration
+
+app:
+  jwt:
+    secret: ${APP_JWT_SECRET:change_this_secret_change_this_secret}
+    expiration-ms: ${APP_JWT_EXP_MS:3600000}
+  cors:
+    allowed-origins: "http://localhost:3000"
+
+server:
+  port: 8080
