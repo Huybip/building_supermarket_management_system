@@ -1,0 +1,15 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="utf-8"/><title>Supplier form</title></head>
+<body>
+  <h1>Supplier</h1>
+  <form th:action="@{/suppliers/save}" th:object="${supplier}" method="post">
+    <label>Name: <input type="text" th:field="*{name}"/></label><br/>
+    <label>Contact: <input type="text" th:field="*{contactName}"/></label><br/>
+    <label>Phone: <input type="text" th:field="*{phone}"/></label><br/>
+    <label>Email: <input type="email" th:field="*{email}"/></label><br/>
+    <label>Address: <input type="text" th:field="*{address}"/></label><br/>
+    <button type="submit">Save</button>
+  </form>
+</body>
+</html>

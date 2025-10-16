@@ -40,17 +40,23 @@ public class SecurityConfig {
         http.csrf().disable()
                 .cors().configurationSource(corsConfigurationSource).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeHttpRequests(auth -> auth
-                        // allow static resources and public pages
-                        .requestMatchers("/", "/index.html", "/login.html", "/favicon.ico", "/css/**", "/js/**",
-                                "/images/**")
-                        .permitAll()
-                        // allow auth endpoints
-                        .requestMatchers("/api/auth/**", "/actuator/**").permitAll()
-                        // everything else requires authentication
-                        .requestMatchers("/api/**").authenticated()
-                        .anyRequest().permitAll())
+        .authorizeHttpRequests(auth -> auth
+            // allow static resources and public pages
+            .requestMatchers("/", "/index.html", "/login.html", "/favicon.ico", "/css/**", "/js/**",
+                "/images/**").permitAll()
+            // allow web UI pages (Thymeleaf)
+            .requestMatchers("/products/**", "/categories/**", "/suppliers/**", "/customers/**", "/orders/**", "/invoices/**", "/users/**").permitAll()
+            // allow auth endpoints and actuator
+            .requestMatchers("/api/auth/**", "/actuator/**").permitAll()
+            // allow H2 console in dev
+            .requestMatchers("/h2-console/**").permitAll()
+            // api endpoints require authentication
+            .requestMatchers("/api/**").authenticated()
+            .anyRequest().permitAll())
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+
+        // Allow frames for H2 console
+        http.headers().frameOptions().disable();
 
         return http.build();
     }

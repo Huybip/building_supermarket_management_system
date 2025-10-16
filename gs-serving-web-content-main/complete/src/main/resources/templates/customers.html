@@ -1,0 +1,13 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="utf-8"/><title>Customers</title></head>
+<body>
+  <h1>Customers</h1>
+  <a th:href="@{/customers/new}">Add customer</a>
+  <ul>
+    <li th:each="c : ${customers}">
+      <span th:text="${c.name}"></span> - <span th:text="${c.email}"></span> - <a th:href="@{'/customers/delete/' + ${c.id}}">Delete</a>
+    </li>
+  </ul>
+</body>
+</html>
