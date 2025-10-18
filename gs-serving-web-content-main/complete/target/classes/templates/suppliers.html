@@ -1,13 +1,13 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="utf-8"/><title>Suppliers</title></head>
-<body>
-  <h1>Suppliers</h1>
-  <a th:href="@{/suppliers/new}">Add supplier</a>
-  <ul>
-    <li th:each="s : ${suppliers}">
-      <span th:text="${s.name}"></span> - <a th:href="@{'/suppliers/delete/' + ${s.id}}">Delete</a>
-    </li>
-  </ul>
-</body>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/_layout :: content">
+<head><title>Suppliers</title></head>
+  <section>
+    <h2>Suppliers</h2>
+    <a th:href="@{/suppliers/new}">Add supplier</a>
+    <ul>
+      <li th:each="s : ${suppliers}">
+        <span th:text="${s.name}"></span> - <a th:href="@{'/suppliers/delete/' + ${s.id}}">Delete</a>
+      </li>
+    </ul>
+  </section>
 </html>

@@ -1,18 +1,12 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="utf-8"/><title>Orders</title></head>
-<body>
-  <h1>Orders</h1>
-  <table border="1">
-    <thead><tr><th>ID</th><th>Customer</th><th>Total</th><th>Status</th></tr></thead>
-    <tbody>
-      <tr th:each="o : ${orders}">
-        <td th:text="${o.id}"></td>
-        <td th:text="${o.customer != null ? o.customer.name : ''}"></td>
-        <td th:text="${o.total}"></td>
-        <td th:text="${o.status}"></td>
-      </tr>
-    </tbody>
-  </table>
-</body>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/_layout :: content">
+<head><title>Orders</title></head>
+  <section>
+    <h2>Orders</h2>
+    <ul>
+      <li th:each="o : ${orders}">
+        <span th:text="${o.id}"></span> - <span th:text="${o.total}"></span>
+      </li>
+    </ul>
+  </section>
 </html>

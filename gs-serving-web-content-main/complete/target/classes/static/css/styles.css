@@ -1,13 +1,22 @@
-body {
-  font-family: system-ui, Arial, sans-serif;
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  color: #222;
-}
-h1 { margin-bottom: 0.25rem; }
-a { color: #0b5fff; text-decoration: none; }
-form { margin-top: 1rem; }
-input { padding: 0.4rem; margin: 0.2rem 0; width: 100%; max-width: 360px; }
-button { padding: 0.5rem 1rem; margin-top: 0.5rem; }
-#msg { margin-top: 1rem; color: #b00; }
+/* Minimal styles for the demo UI */
+:root { --accent: #2563eb; --muted: #6b7280 }
+body { font-family: Inter, system-ui, Arial, sans-serif; margin: 0; padding: 0; background: #f6f7fb; color: #111827 }
+.container { max-width: 980px; margin: 1.5rem auto; padding: 0 1rem }
+.site-header { background: #fff; color: #111827; padding: 0.75rem 1rem; border-bottom: 1px solid #e6e9ef; display:flex; align-items:center; justify-content:space-between }
+.site-header h1 { margin: 0; font-size: 1.05rem }
+.nav { margin-left: 1rem }
+.nav a { color: #2563eb; margin-right: 0.8rem; text-decoration: none }
+.nav a:hover { text-decoration: underline }
+.card { background: #fff; padding: 1rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(15,23,42,0.04) }
+.login-card { max-width: 480px; margin: 2rem auto }
+label { display: block; margin: 0.5rem 0 }
+input[type="text"], input[type="password"], input[type="number"] { width: 100%; padding: 0.5rem; border: 1px solid #e5e7eb; border-radius: 6px }
+table { width: 100%; border-collapse: collapse; margin-top: 0.5rem }
+th, td { padding: 0.6rem; border-bottom: 1px solid #eef2f6; text-align: left }
+.actions { margin-top: 0.75rem }
+.logout { color: #ef4444 }
+h1 { margin-bottom: 0.25rem }
+a { color: #0b5fff; text-decoration: none }
+form { margin-top: 1rem }
+button { padding: 0.5rem 1rem; margin-top: 0.5rem }
+#msg { margin-top: 1rem; color: #b00 }

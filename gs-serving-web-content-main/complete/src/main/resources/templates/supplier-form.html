@@ -1,15 +1,14 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="utf-8"/><title>Supplier form</title></head>
-<body>
-  <h1>Supplier</h1>
-  <form th:action="@{/suppliers/save}" th:object="${supplier}" method="post">
-    <label>Name: <input type="text" th:field="*{name}"/></label><br/>
-    <label>Contact: <input type="text" th:field="*{contactName}"/></label><br/>
-    <label>Phone: <input type="text" th:field="*{phone}"/></label><br/>
-    <label>Email: <input type="email" th:field="*{email}"/></label><br/>
-    <label>Address: <input type="text" th:field="*{address}"/></label><br/>
-    <button type="submit">Save</button>
-  </form>
-</body>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/_layout :: content">
+<head><title>Supplier form</title></head>
+  <section>
+    <h2>Supplier</h2>
+    <form th:action="@{/suppliers/save}" th:object="${supplier}" method="post">
+      <label>Name: <input type="text" th:field="*{name}"/></label>
+      <label>Contact: <input type="text" th:field="*{contactName}"/></label>
+      <label>Phone: <input type="text" th:field="*{phone}"/></label>
+      <label>Email: <input type="text" th:field="*{email}"/></label>
+      <div class="actions"><button type="submit">Save</button></div>
+    </form>
+  </section>
 </html>

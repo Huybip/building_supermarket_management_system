@@ -1,13 +1,13 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="utf-8"/><title>Users</title></head>
-<body>
-  <h1>Users</h1>
-  <a th:href="@{/users/new}">Create user</a>
-  <ul>
-    <li th:each="u : ${users}">
-      <span th:text="${u.username}"></span> - <span th:text="${u.fullName}"></span>
-    </li>
-  </ul>
-</body>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/_layout :: content">
+<head><title>Users</title></head>
+  <section>
+    <h2>Users</h2>
+    <a th:href="@{/users/new}">Create user</a>
+    <ul>
+      <li th:each="u : ${users}">
+        <span th:text="${u.username}"></span> - <span th:text="${u.fullName}"></span>
+      </li>
+    </ul>
+  </section>
 </html>

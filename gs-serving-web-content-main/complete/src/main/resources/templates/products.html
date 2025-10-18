@@ -1,13 +1,15 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="utf-8" />
-  <title>Products</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/_layout :: content(~{::body})">
+<head><title>Products</title></head>
 <body>
-  <h1>Products</h1>
-  <a th:href="@{/products/new}">Add product</a> | <a th:href="@{/categories}">Categories</a> | <a th:href="@{/suppliers}">Suppliers</a>
-  <table border="1">
+  <section>
+    <h2>Products</h2>
+    <div style="margin-bottom:.5rem">
+      <a th:href="@{/products/new}">Add product</a> |
+      <a th:href="@{/categories}">Categories</a> |
+      <a th:href="@{/suppliers}">Suppliers</a>
+    </div>
+    <table>
     <thead>
       <tr><th>ID</th><th>Name</th><th>Price</th><th>Qty</th><th>Category</th><th>Supplier</th><th>Actions</th></tr>
     </thead>
@@ -24,6 +26,7 @@
         </td>
       </tr>
     </tbody>
-  </table>
+      </table>
+  </section>
 </body>
 </html>

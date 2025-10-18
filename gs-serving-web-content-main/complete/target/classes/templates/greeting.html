@@ -1,10 +1,7 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head> 
-    <title>Getting Started: Serving Web Content</title> 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-    <p th:text="|Hello, ${name}!|" />
-</body>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/_layout :: content">
+<head><title>Greeting</title></head>
+    <section>
+        <p th:text="|Hello, ${name}!|" />
+    </section>
 </html>

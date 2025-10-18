@@ -1,23 +1,9 @@
 <!doctype html>
-<html lang="vi">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Supermarket Management - Giới thiệu</title>
-  <link rel="stylesheet" href="/css/styles.css" />
-</head>
-<body>
-  <main>
-    <header>
-      <h1>Supermarket Management System</h1>
-      <p>Quản lý sản phẩm, đơn hàng và khách hàng — Hệ thống demo.</p>
-      <p><a href="/login">Đăng nhập</a></p>
-    </header>
-
-    <section>
-      <h2>Giới thiệu nhanh</h2>
-      <p>Hệ thống này cung cấp API để quản lý siêu thị. Vui lòng đăng nhập để truy cập giao diện quản trị.</p>
-    </section>
-  </main>
-</body>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/_layout :: content">
+<head><title>Giới thiệu</title></head>
+  <section>
+    <h2>Giới thiệu nhanh</h2>
+    <p>Hệ thống này cung cấp API và giao diện để quản lý siêu thị. Vui lòng đăng nhập để truy cập giao diện quản trị.</p>
+    <p><a th:href="@{/login}">Đăng nhập</a></p>
+  </section>
 </html>

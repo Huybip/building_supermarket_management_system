@@ -1,61 +1,12 @@
 <!doctype html>
-<html lang="vi">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Đăng nhập</title>
-  <link rel="stylesheet" href="/css/styles.css" />
-</head>
-<body>
-  <main>
-    <h1>Đăng nhập</h1>
-    <form id="loginForm">
-      <label>
-        Tên đăng nhập
-        <input type="text" id="username" required />
-      </label>
-      <br/>
-      <label>
-        Mật khẩu
-        <input type="password" id="password" required />
-      </label>
-      <br/>
-      <button type="submit">Đăng nhập</button>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/_layout :: content">
+<head><title>Đăng nhập</title></head>
+  <section class="login-card">
+    <h2>Đăng nhập</h2>
+    <form th:action="@{/login}" method="post">
+      <label>Username: <input name="username" type="text" required /></label>
+      <label>Password: <input name="password" type="password" required /></label>
+      <div class="actions"><button type="submit">Đăng nhập</button></div>
     </form>
-    <div id="msg"></div>
-  </main>
-
-  <script>
-    const form = document.getElementById('loginForm');
-    const msg = document.getElementById('msg');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      msg.textContent = 'Đang đăng nhập...';
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-
-      try {
-        const res = await fetch('/api/auth/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, password })
-        });
-        if (!res.ok) {
-          const txt = await res.text();
-          msg.textContent = 'Lỗi: ' + (txt || res.statusText);
-          return;
-        }
-        const data = await res.json();
-        localStorage.setItem('jwt', data.token);
-        msg.textContent = 'Đăng nhập thành công';
-        // redirect to admin UI (implement later)
-        window.location.href = '/';
-      } catch (err) {
-        msg.textContent = 'Lỗi kết nối';
-        console.error(err);
-      }
-    });
-  </script>
-</body>
+  </section>
 </html>

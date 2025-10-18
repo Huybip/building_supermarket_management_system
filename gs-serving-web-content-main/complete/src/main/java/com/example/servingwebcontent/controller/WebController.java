@@ -42,11 +42,23 @@ public class WebController {
         this.orderService = orderService;
     }
 
-    // Home -> products
-    @GetMapping({"/", "/products"})
+    // Landing page (public)
+    @GetMapping({"/"})
+    public String index() {
+        return "index";
+    }
+
+    // Products (protected UI)
+    @GetMapping({"/products"})
     public String products(Model model) {
         model.addAttribute("products", productService.findAll());
         return "products";
+    }
+
+    // Login page (Thymeleaf)
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 
     @GetMapping("/products/new")
