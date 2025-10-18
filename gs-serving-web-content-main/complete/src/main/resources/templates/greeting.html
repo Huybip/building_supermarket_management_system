@@ -1,7 +1,11 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/_layout :: content">
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/_layout :: content(~{::body})">
 <head><title>Greeting</title></head>
+<body>
     <section>
-        <p th:text="|Hello, ${name}!|" />
+        <h2 th:text="${message}">Hello!</h2>
     </section>
+</body>
 </html>
+</html>
+

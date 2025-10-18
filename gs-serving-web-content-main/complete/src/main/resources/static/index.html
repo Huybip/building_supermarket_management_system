@@ -1,11 +1,10 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/_layout :: content(~{::body})">
-<head><title>Giới thiệu</title></head>
+<head><title>Welcome</title></head>
 <body>
   <section>
-    <h2>Giới thiệu nhanh</h2>
-    <p>Hệ thống này cung cấp API và giao diện để quản lý siêu thị. Vui lòng đăng nhập để truy cập giao diện quản trị.</p>
-    <p><a th:href="@{/login}">Đăng nhập</a></p>
+    <h2>Welcome to the Supermarket Management Demo</h2>
+    <p>This is a small demo application. Please <a th:href="@{/login}">log in</a> to continue.</p>
   </section>
 </body>
 </html>

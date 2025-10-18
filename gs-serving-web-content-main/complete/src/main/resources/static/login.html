@@ -1,12 +1,20 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/_layout :: content">
-<head><title>Đăng nhập</title></head>
-  <section class="login-card">
-    <h2>Đăng nhập</h2>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/_layout :: content(~{::body})">
+<head><title>Login</title></head>
+<body>
+  <section>
+    <h2>Login</h2>
     <form th:action="@{/login}" method="post">
-      <label>Username: <input name="username" type="text" required /></label>
-      <label>Password: <input name="password" type="password" required /></label>
-      <div class="actions"><button type="submit">Đăng nhập</button></div>
+      <div>
+        <label>Username <input type="text" name="username"/></label>
+      </div>
+      <div>
+        <label>Password <input type="password" name="password"/></label>
+      </div>
+      <div>
+        <button type="submit">Login</button>
+      </div>
     </form>
   </section>
+</body>
 </html>

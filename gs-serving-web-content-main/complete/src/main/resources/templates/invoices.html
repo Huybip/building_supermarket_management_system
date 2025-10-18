@@ -1,15 +1,17 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/_layout :: content">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/_layout :: content(~{::body})">
 <head><title>Invoices</title></head>
+<body>
   <section>
     <h2>Invoices</h2>
-    <table>
-      <thead><tr><th>ID</th><th>Order</th><th>Amount</th><th>IssuedAt</th></tr></thead>
-      <tbody>
-        <tr th:each="i : ${invoices}">
-          <td th:text="${i.id}"></td>
-          <td th:text="${i.order != null ? i.order.id : ''}"></td>
-          <td th:text="${i.amount}"></td>
+    <ul>
+      <li th:each="i : ${invoices}">
+        <span th:text="${i.id}"></span> - <span th:text="${i.amount}"></span>
+      </li>
+    </ul>
+  </section>
+</body>
+</html>
           <td th:text="${i.issuedAt}"></td>
         </tr>
       </tbody>
