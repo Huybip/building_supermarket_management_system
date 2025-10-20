@@ -1,6 +1,7 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/_layout :: content">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/_layout :: content(~{::body})">
 <head><title>Orders</title></head>
+<body>
   <section>
     <h2>Orders</h2>
     <ul>
@@ -9,4 +10,5 @@
       </li>
     </ul>
   </section>
+</body>
 </html>

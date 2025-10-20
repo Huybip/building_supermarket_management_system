@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/_layout :: content">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/_layout :: content(~{::body})">
 <head><title>Customers</title></head>
   <section>
     <h2>Customers</h2>
@@ -10,4 +10,17 @@
       </li>
     </ul>
   </section>
+<body>
+  <section>
+    <h2>Customers</h2>
+    <div>
+      <a th:href="@{/customers/new}">Add customer</a>
+    </div>
+    <ul>
+      <li th:each="c : ${customers}">
+        <span th:text="${c.name}"></span> - <span th:text="${c.email}"></span> - <a th:href="@{'/customers/delete/' + ${c.id}}">Delete</a>
+      </li>
+    </ul>
+  </section>
+</body>
 </html>

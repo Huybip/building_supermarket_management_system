@@ -14,6 +14,8 @@ Quick dev run (H2 in-memory):
 
    java -jar -Dspring.profiles.active=h2 gs-serving-web-content-main/complete/target/backend-springboot-0.0.1-SNAPSHOT.jar
 
+   cd /workspaces/building_supermarket_management_system/gs-serving-web-content-main/complete && mvn -Dspring-boot.run.profiles=h2 spring-boot:run -e
+
 Or run from Maven:
 
    mvn -f gs-serving-web-content-main/complete -Dspring-boot.run.profiles=h2 spring-boot:run

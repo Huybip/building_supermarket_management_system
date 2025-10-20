@@ -9,8 +9,12 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      # create a fresh schema for local dev so tables and FKs are created in correct order
+      ddl-auto: create-drop
     show-sql: true
+
+  flyway:
+    enabled: false
 
 app:
   cors:
