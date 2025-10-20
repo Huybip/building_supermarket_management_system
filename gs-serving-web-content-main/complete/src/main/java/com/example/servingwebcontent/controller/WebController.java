@@ -2,11 +2,8 @@ package com.example.servingwebcontent.controller;
 
 import com.example.servingwebcontent.model.Category;
 import com.example.servingwebcontent.model.Customer;
-import com.example.servingwebcontent.model.Invoice;
 import com.example.servingwebcontent.model.Product;
 import com.example.servingwebcontent.model.Supplier;
-import com.example.servingwebcontent.model.User;
-import com.example.servingwebcontent.model.Order;
 import com.example.servingwebcontent.service.CategoryService;
 import com.example.servingwebcontent.service.CustomerService;
 import com.example.servingwebcontent.service.InvoiceService;
