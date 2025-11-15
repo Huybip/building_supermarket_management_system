@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Quản Lý Tài Sản Công</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-building"></i>
+                <h2>Quản Lý Tài Sản</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#dashboard"><i class="fas fa-dashboard"></i> Bảng Điều Khiển</a></li>
+                <li><a href="#assets"><i class="fas fa-box"></i> Tài Sản</a></li>
+                <li><a href="#departments"><i class="fas fa-sitemap"></i> Phòng Ban</a></li>
+                <li><a href="#maintenance"><i class="fas fa-wrench"></i> Bảo Trì</a></li>
+                <li><a href="#reports"><i class="fas fa-chart-bar"></i> Báo Cáo</a></li>
+                <li><a href="#users"><i class="fas fa-users"></i> Người Dùng</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <div class="breadcrumb">
+                    <span>Hệ Thống Quản Lý Tài Sản Công</span>
+                </div>
+                <div class="user-info">
+                    <span>Xin chào, <strong>Admin</strong></span>
+                    <img src="/images/avatar.jpg" alt="User" class="avatar">
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <section id="dashboard" class="content-section active">
+                <div class="dashboard-header">
+                    <h1>Bảng Điều Khiển</h1>
+                </div>
+
+                <!-- Statistics Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: #3498db;">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Tổng Tài Sản</h3>
+                            <p class="stat-number" id="totalAssets">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: #e74c3c;">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Tài Sản Hỏng</h3>
+                            <p class="stat-number" id="damagedAssets">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: #f39c12;">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Đang Bảo Trì</h3>
+                            <p class="stat-number" id="maintenanceAssets">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: #27ae60;">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Tổng Giá Trị</h3>
+                            <p class="stat-number" id="totalValue">0 VNĐ</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <button class="btn btn-primary" onclick="openAssetForm()">
+                        <i class="fas fa-plus"></i> Thêm Tài Sản Mới
+                    </button>
+                    <button class="btn btn-secondary" onclick="exportReport()">
+                        <i class="fas fa-download"></i> Xuất Báo Cáo
+                    </button>
+                </div>
+            </section>
+
+            <!-- Assets Section -->
+            <section id="assets" class="content-section">
+                <div class="section-header">
+                    <h2>Quản Lý Tài Sản</h2>
+                    <button class="btn btn-primary" onclick="openAssetForm()">
+                        <i class="fas fa-plus"></i> Thêm Tài Sản
+                    </button>
+                </div>
+
+                <div class="filters">
+                    <input type="text" placeholder="Tìm kiếm theo mã tài sản..." id="searchInput">
+                    <select id="categoryFilter">
+                        <option value="">-- Chọn Danh Mục --</option>
+                        <option value="ELECTRONICS">Thiết Bị Điện Tử</option>
+                        <option value="FURNITURE">Nội Thất</option>
+                        <option value="MACHINERY">Máy Móc</option>
+                        <option value="BUILDING">Xây Dựng</option>
+                        <option value="VEHICLE">Phương Tiện</option>
+                    </select>
+                    <select id="statusFilter">
+                        <option value="">-- Chọn Trạng Thái --</option>
+                        <option value="ACTIVE">Đang Sử Dụng</option>
+                        <option value="MAINTENANCE">Bảo Trì</option>
+                        <option value="DAMAGED">Hỏng</option>
+                    </select>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Mã Tài Sản</th>
+                            <th>Tên Tài Sản</th>
+                            <th>Danh Mục</th>
+                            <th>Trạng Thái</th>
+                            <th>Giá Trị Hiện Tại</th>
+                            <th>Phòng Ban</th>
+                            <th>Hành Động</th>
+                        </tr>
+                    </thead>
+                    <tbody id="assetsTable">
+                        <tr>
+                            <td colspan="7" class="text-center">Đang tải dữ liệu...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Modal Form -->
+            <div id="assetModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeAssetForm()">&times;</span>
+                    <h2>Thêm/Sửa Tài Sản</h2>
+                    <form id="assetForm">
+                        <input type="text" placeholder="Mã Tài Sản" id="assetCode" required>
+                        <input type="text" placeholder="Tên Tài Sản" id="assetName" required>
+                        <textarea placeholder="Mô Tả" id="assetDescription"></textarea>
+                        <select id="assetCategory" required>
+                            <option value="">-- Chọn Danh Mục --</option>
+                            <option value="ELECTRONICS">Thiết Bị Điện Tử</option>
+                            <option value="FURNITURE">Nội Thất</option>
+                        </select>
+                        <input type="number" placeholder="Giá Trị Gốc (VNĐ)" id="originalValue" required>
+                        <input type="date" placeholder="Ngày Mua" id="purchaseDate" required>
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
